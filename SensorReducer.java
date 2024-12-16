@@ -35,21 +35,19 @@ public class SensorReducer extends Reducer<Text, Text, Text, Text> {
         double correlation = calculateCorrelation(temperatures, humidities); // Correlation Temp-Humidité
 
         String results = String.format(
-                "Temperature [Min: %.2f, Max: %.2f, Avg: %.2f, Sum: %.2f], " +
-                        "Humidity [Min: %.2f, Max: %.2f, Avg: %.2f, Sum: %.2f], " +
+                "Temperature [Min: %.2f, Max: %.2f, Avg: %.2f], " +
+                        "Humidity [Min: %.2f, Max: %.2f, Avg: %.2f], " +
                         "PM2.5 [Min: %.2f, Max: %.2f, Avg: %.2f, Sum: %.2f], " +
                         "Water Usage [Min: %.2f, Max: %.2f, Avg: %.2f, Sum: %.2f], " +
                         "Correlation Temp-Hum: %.4f",
                 calculateMin(temperatures), calculateMax(temperatures), calculateAvg(temperatures),
-                calculateSum(temperatures),
-                calculateMin(humidities), calculateMax(humidities), calculateAvg(humidities), calculateSum(humidities),
+                calculateMin(humidities), calculateMax(humidities), calculateAvg(humidities),
                 calculateMin(pm2_5s), calculateMax(pm2_5s), calculateAvg(pm2_5s), calculateSum(pm2_5s),
                 calculateMin(waterUsages), calculateMax(waterUsages), calculateAvg(waterUsages),
                 calculateSum(waterUsages),
-                correlation // Corrélation
-        );
+                correlation);
 
-        // Émettre les résultats
+        // Émettre les résultats sans somme pour Température et Humidité
         context.write(key, new Text(results));
     }
 
