@@ -3,7 +3,7 @@ import csv
 from datetime import datetime, timedelta
 
 # Config
-num_readings = 5  # Volume de données
+num_readings = 100  # Volume de données
 locations = ["Quartier-1", "Quartier-2", "Quartier-3"]
 output_file = "sensor_data.csv"  # Fichier de sortie
 
